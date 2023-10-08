@@ -138,5 +138,7 @@ def get_data():
       print("Request failed with status code:", response.status_code)
       return {'data': []}
 
+server = app.server
+
 if __name__ == '__main__':
     app.run(debug=True)
