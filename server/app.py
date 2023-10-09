@@ -107,7 +107,6 @@ def assets(path):
 def get_data():
     from_date = request.args.get('from')
     to_date = request.args.get('to')
-    print(from_date, to_date)
     parameters = {
         "from": from_date if from_date else "2022-10-01", 
         "to": to_date if to_date else "2022-12-31",

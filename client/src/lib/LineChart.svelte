@@ -8,7 +8,7 @@
 
   export let data
 
-  const margin = { top: 40, right: 40, bottom: 30, left: 40 };
+  const margin = { top: 40, right: 30, bottom: 30, left: 60 };
   let div
   let width = 200
   let height = 520
@@ -88,7 +88,7 @@
       {#each lineData as d}
         <path
           d={lineGenerator(d[1])} 
-          stroke={d[0] === 'renewable' ? 'green' : 'black'}
+          stroke="black"
           fill="transparent" 
           stroke-width="3" 
         />
@@ -96,18 +96,18 @@
           cx={xScale(d[1][0].date_id)}
           cy={yScale(d[1][0].value)}
           r={5}
-          fill={d[0] === 'renewable' ? 'green' : 'black'}
+          fill="black"
         />
         <circle
           cx={xScale(d[1][1].date_id)}
           cy={yScale(d[1][1].value)}
           r={5}
-          fill={d[0] === 'renewable' ? 'green' : 'black'}
+          fill="black"
         />
         <text
           x={xScale(d[1][1].date_id) - 20}
           y={yScale(d[1][1].value) - 10}
-          fill={d[0] === 'renewable' ? 'green' : 'black'}
+          fill="black"
           text-anchor="end"
         >
           {d[0]}

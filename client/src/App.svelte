@@ -77,32 +77,36 @@
 <main>
   {#if monthlyData.length > 0}
   <div class='header'>
-    <h2 style="margin-left: 20px;">Power generation for different fuel sources </h2>
-    <h2 style="margin-left: 20px;">from October to December 2022 in </h2>
-    <div class='dropdown'>
-      <select value={selectedOption} on:change={handleOptionChange}>
-        {#each options as option}
-        <option value={option}>{option}</option>
-        {/each}
-      </select>
-      <span class="caret"></span>
+    <div class='title' style="margin-left: 20px;">
+      <h2>Power generation for different fuel sources from October to December 2022</h2>
     </div>
-    <div class="buttons">
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <div
-        class={selectedAttr === 'value' ? 'active' : ''}
-        on:click={() => handleTabClick('value')}
-      >
-        Absolute values
+    <div class='panel'>
+      <div class='dropdown'>
+        <select value={selectedOption} on:change={handleOptionChange}>
+          {#each options as option}
+          <option value={option}>{option}</option>
+          {/each}
+        </select>
+        <span class="caret"></span>
       </div>
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <div
-        class={selectedAttr === 'perc' ? 'active' : ''}
-        on:click={() => handleTabClick('perc')}
-      >
-        % of the total generation
+      <div class="buttons">
+        <h3 style="margin-top: 30px; width: 68px;">Show as: </h3>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
+        <div
+          class={selectedAttr === 'value' ? 'active' : ''}
+          on:click={() => handleTabClick('value')}
+        >
+          <h3>Absolute values</h3>
+        </div>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
+        <div
+          class={selectedAttr === 'perc' ? 'active' : ''}
+          on:click={() => handleTabClick('perc')}
+        >
+          <h3>% of the total generation</h3>
+        </div>
       </div>
     </div>
   </div>
@@ -124,15 +128,30 @@
 </main>
 
 <style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+  }
+
   .header {
     display: flex;
-    width: 100vw;
+    justify-content: space-between;
+    width: 80%;
+    height: 100px;
+  }
+
+  .panel { 
+    display: flex;
   }
 
   .wrapper {
     display: flex;
-    width: 100vw;
-    height: calc(100vh - 80px);
+    width: 80%;
+    height: 80vh;
   }
 
   .left {
@@ -149,7 +168,6 @@
     display: flex;
     margin: 0 20px;
     width: auto;
-    height: 70px;
   }
 
   .buttons div {
@@ -161,6 +179,11 @@
     transition: background-color 0.3s ease;
     border-radius: 10px;
     margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 48px;
   }
   
   .buttons div:hover {
@@ -172,7 +195,11 @@
     color: #fff;
   }
 
-
+  .buttons h3 {
+    text-align: center;
+    font-size: 1em;
+  }
+  
   .dropdown {
     position: relative;
     display: inline-block;
@@ -184,6 +211,7 @@
     border: 2px solid black;
     border-radius: 10px;
     margin: 10px 20px;
+    height: 46px;
   } 
   
   .dropdown select {
@@ -196,7 +224,7 @@
     border: none;
     outline: none;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin: 0px 16px;
   }
 
