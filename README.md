@@ -1,6 +1,29 @@
 # A web application to visualize power generation for different fuel sources 
 
-Using Python and Flask for the backend API, JavaScript and Svelte for the UI
+**Technologies: Python and Flask for the backend API, JavaScript and Svelte for the UI**
+
+The dataset comprises power generation data categorized by type of fuel and provided on an hourly basis for four European countries: Germany, Austria, Denmark, and France.
+
+I explored and wrangled the data in Python so that it can be in the correct structure to render easily as a stacked area chart with D3.js on the frontend (Svelte). I calculated the aggregated daily generation for each type of fuel and stored the results. I also categorized the fuel sources into renewables and non-renewables and then calculated aggregated daily and monthly electricity generation from these two categories. An API route is set up in Flask to transmit these datasets to the frontend.
+
+A stacked area chart is chosen to represent the daily data to make it easy to compare the relative proportions of different fuel sources at any given point in time. The height of each stack represents the total for that day, and the segments within the stack show the contribution of each fuel source to the total. 
+
+A dropdown menu allows the user to select different countries from the dataset. When the user selects a country, both charts update automatically to reflect the selected country's power generation data.
+
+<br> 
+
+#### Stacked area chart with tooltips created with D3.js
+![Stacked area chart with tooltips created with D3.js](https://github.com/dianaow/power-gen-dashboard/blob/main/ui_snapshot_1.png)
+
+<br> 
+
+#### Aggregated daily electricity generation from fuel sources (%)
+![Aggregated daily electricity generation from fuel sources (%)](https://github.com/dianaow/power-gen-dashboard/blob/main/ui_snapshot_2.png)
+
+<br> 
+
+#### Interactivity: Click on a legend item to highlight the fuel source
+![Interactivity: Click on a legend item to highlight the fuel source](https://github.com/dianaow/power-gen-dashboard/blob/main/ui_snapshot_3.png)
 
 ### Backend: Flask
 1. Navigate to the server folder. Create a Python virtual environment where the dependencies for this project will be installed.
